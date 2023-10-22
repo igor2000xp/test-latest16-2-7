@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'test-latest16-2-7';
+
+  versionAngular = '16.2.7';
 }
