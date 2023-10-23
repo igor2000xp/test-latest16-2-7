@@ -9,10 +9,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './store/reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { VehicleMotorComponent } from './UI/vehicle/main-form/vehicle-motor/vehicle-motor.component';
+import { VehicleAutoComponent } from './UI/vehicle/main-form/vehicle-auto/vehicle-auto.component';
+import { VehicleScooterComponent } from './UI/vehicle/main-form/vehicle-scooter/vehicle-scooter.component';
 
 
 @NgModule({
-  declarations: [AppComponent, MainFormComponent],
+  declarations: [AppComponent, MainFormComponent, VehicleMotorComponent, VehicleAutoComponent, VehicleScooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

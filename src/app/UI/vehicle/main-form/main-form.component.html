@@ -7,7 +7,7 @@
       <!-- SELECT VEHICLE TYPE-->
       <label class="block mt-4">
         <span class="text-gray-700">Van welk type voertuig wilt u voertuiginformatie opzoeken?</span>
-        <select formControlName="vehicleType"
+        <select formControlName="vehicleType" id="vehicleType" #vehicleType (change)="onChange(vehicleType.value)"
           class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
           name="vehicle-type">
           <option>Auto</option>
@@ -19,20 +19,17 @@
 
     <div>
       <!-- SELECT VEHICLE SUBTYPE-->
-      <label class="block mt-4">
+      <label class="block mt-4" *ngIf="vehicleType.value === '' ">
         <span class="text-gray-700">Welk type [auto/motor/brommer] hebt u?</span>
-        <select formControlName="vehicleSubtype"
+        <select
           class="block w-full mt-1 rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0"
-          name="vehicle-subtype">
-          <option value="Hatchback">Sedan</option>
-          <option value="Station">Station</option>
-          <option value="Cabriolet">Cabriolet</option>
-          <option value="Coupé">Coupé</option>
-          <option value="MPV">MPV</option>
-          <option value="Terreinauto">Terreinauto</option>
-          <!-- Add other options here -->
+          name="auto-subtype">
+          <option defaultSelected>choose a vehicle type, please</option>
         </select>
       </label>
+      <app-vehicle-auto *ngIf="vehicleType.value === 'Auto' "></app-vehicle-auto>
+      <app-vehicle-motor *ngIf="vehicleType.value === 'Motor' "></app-vehicle-motor>
+      <app-vehicle-scooter *ngIf="vehicleType.value === 'Scooter' "></app-vehicle-scooter>
     </div>
 
     <div>
