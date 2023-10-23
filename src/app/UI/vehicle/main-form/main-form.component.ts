@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { State } from 'src/app/store/reducers';
 import { FormState } from 'src/app/store/actions/form-state.actions';
+import { insertDashes } from 'src/app/helpers';
 
 @Component({
   selector: 'app-main-form',
@@ -11,34 +12,31 @@ import { FormState } from 'src/app/store/actions/form-state.actions';
 })
 export class MainFormComponent implements OnInit {
 
-  vehicleForm: FormGroup;
-  // control = new FormControl();
+  vehicleFormGroup: FormGroup;
+  licencePlate = '';
 
   constructor(private store: Store<State>) {
-    this.vehicleForm = new FormGroup({});
+    this.vehicleFormGroup = new FormGroup({});
   }
 
   ngOnInit() {
-    this.vehicleForm.addControl('vehicleType', new FormControl(null, Validators.required));
-    // this.vehicleForm.addControl('vehicleSubtype', new FormControl(null, Validators.required));
-    this.vehicleForm.addControl('formattingLicencePlate', new FormControl(null, Validators.required));
-    this.vehicleForm.addControl('validatingLicencePlate', new FormControl(null, Validators.required));
+    this.vehicleFormGroup.addControl('vehicleType', new FormControl(null, Validators.required));
+    this.vehicleFormGroup.addControl('formattingLicencePlate', new FormControl(null, Validators.required));
+    this.vehicleFormGroup.addControl('validatingLicencePlate', new FormControl(null, Validators.required));
   }
 
   onChange(value: string) {
-    // value = value === null ? '' : value;
+    value = insertDashes(value);
+    console.log(value);
     this.store.dispatch(FormState.currentVehicleType({ currentVehicleType: value }));
   }
-  // ngOnInit() {
-  //   this.vehicleForm = new FormGroup({
-  //     'vehicleType': new FormControl(null, Validators.required),
-  //     'vehicleSubtype': new FormControl(null, Validators.required),
-  //     'formattingLicencePlate': new FormControl(null, Validators.required),
-  //     'validatingLicencePlate': new FormControl(null, Validators.required),
-  //   });
-  // }
+  onChangeFormatting() {
+    this.licencePlate = insertDashes(this.licencePlate).toUpperCase();
+
+    this.store.dispatch(FormState.currentLicencePlate({ currentFormattingLicencePlate: this.licencePlate }));
+  }
 
   onSubmit() {
-    console.log(this.vehicleForm.value);
+    console.log(this.vehicleFormGroup.value);
   }
 }
