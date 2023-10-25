@@ -12,6 +12,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { VehicleMotorComponent } from './UI/vehicle/main-form/vehicle-motor/vehicle-motor.component';
 import { VehicleAutoComponent } from './UI/vehicle/main-form/vehicle-auto/vehicle-auto.component';
 import { VehicleScooterComponent } from './UI/vehicle/main-form/vehicle-scooter/vehicle-scooter.component';
+import { EffectsModule } from '@ngrx/effects';
+import { VehicleEffects } from './store/effects/vehicle.effects';
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { VehicleScooterComponent } from './UI/vehicle/main-form/vehicle-scooter/
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() }),
+    EffectsModule.forFeature([VehicleEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

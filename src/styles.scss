@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @import "src/assets/styles/abstract/constants";
 @import "src/assets/styles/abstract/mixins";
 @import "src/assets/styles/abstract/placeholder";

@@ -1,3 +1,7 @@
+<h1 class="text-3xl font-bold underline m-10">
+  Hello world!
+</h1>
+
 <div class="grid md:grid-cols-2">
   <form [formGroup]="vehicleFormGroup" (ngSubmit)="onSubmit() " class="p-8">
 
@@ -36,12 +40,13 @@
       <!-- INPUT LICENSE PLATE formattingLicencePlate -->
       <label class="block mt-4">
         <span class="text-gray-700">Vul het kenteken van uw [auto/motor/brommer] in.</span>
-        <input formControlName="formattingLicencePlate" type="text" [(ngModel)]="licencePlate"
-          (input)="onChangeFormatting()"
+        <input formControlName="formattingLicencePlate" type="text" (input)="onChangeFormatting()"
           class="mt-1 block w-full rounded-md bg-yellow-400 border-red-400 focus:border-gray-500 focus:bg-yellow-300 focus:ring-0"
           name="formatting-licence-plate" placeholder="Bijvoorbeeld AA-BB-12">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
-          <div class="font-bold">Oeps, het ingevoerde kenteken is niet geldig.</div>
+        <div>{{licencePlate}}</div>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert"
+          *ngIf="!isLicencePlateValid">
+          <div class="font-bold">Oeps, het ingevoerde kenteken is niet geldig. </div>
           <div class="block sm:inline">Gebruik het volgende formaat AA-12-BB.</div>
         </div>
       </label>
@@ -51,19 +56,30 @@
       <!-- INPUT LICENSE PLATE validatingLicencePlate -->
       <label class="block mt-4">
         <span class="text-gray-700">Vul het kenteken van uw [auto/motor/brommer] in.</span>
-        <input formControlName="validatingLicencePlate" type="text"
+        <p>JFK01P
+          wx12nz
+          g241gh {{isLicencePlateValid}}</p>
+
+        <!-- <input formControlName="validatingLicencePlate" type="text" (input)="onChangeValidating($event)"
           class="mt-1 block w-full rounded-md bg-yellow-400 border-red-400 focus:border-gray-500 focus:bg-yellow-300 focus:ring-0"
-          name="validating-licence-plate" placeholder="Bijvoorbeeld 1234">
-        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+          name="validating-licence-plate" placeholder="Bijvoorbeeld 1234"> -->
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert"
+          *ngIf="!isLicencePlateValid">
           <div class="font-bold">Helaas is het ingevoerde kenteken niet geldig. Probeer het opnieuw.</div>
         </div>
       </label>
     </div>
 
-    <div>
-      <button type="submit" [disabled]="!vehicleFormGroup.valid">Submit</button>
+    <div class="mt-4">
+      <!-- <button type="submit" [disabled]="!vehicleFormGroup.valid">Submit</button> -->
+      <button type="submit" [disabled]="!vehicleFormGroup.valid"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        Verzenden
+      </button>
+      <div class="text-red-700">Vul alle waardes correct in.</div>
     </div>
-
-
   </form>
+  <picture>
+    <img src="./assets/auto.jpg" alt="auto" class="object-cover h-full w-full">
+  </picture>
 </div>
