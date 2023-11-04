@@ -26,7 +26,7 @@ import { VehicleEffects } from './store/effects/vehicle.effects';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() }),
-    EffectsModule.forFeature([VehicleEffects]),
+    // EffectsModule.forFeature([VehicleEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
