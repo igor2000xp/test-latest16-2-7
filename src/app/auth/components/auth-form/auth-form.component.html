@@ -1,0 +1,50 @@
+<div class="auth-page">
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 col-xs-12">
+        <form [formGroup]="authGroup" class="auth-form" (ngSubmit)="onSubmit()">
+            <fieldset class="form-group">
+              <input formControlName="name" type="text" placeholder="name" class="form-control form-control-lg" (input)="onChangeName()">
+              <div *ngIf="isVisibleErrorName" class="login-validate">
+                <span *ngIf="!isValidName">Input name, length more than 2 symbols but no more 15 symbols</span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input formControlName="email" type="text" placeholder="email" class="form-control form-control-lg" (input)="onChangeMail()">
+              <div *ngIf="isVisibleMailError" class="login-validate">
+                <span *ngIf="!isMailRight">Enter valid email</span>
+                <span *ngIf="!isMailMaxLenght">Your email address length is more than 50 symbols</span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input formControlName="password" type="password" placeholder="password" class="form-control form-control-lg" (input)="onChangePassword()">
+              <div class="login-validate" *ngIf="isVisiblePassErrors">
+                <span>Your password need to have:</span><br>
+                <span *ngIf="!isCheckedLengthPass">* length more than {{MIN_LENGTH_PASSWORD}} symbols</span><br>
+                <span *ngIf="!isCheckedUpperLowerPass">* more than 1 UpperCase and more than 1 LowerCase letters</span><br>
+                <span *ngIf="!isCheckedDigitPass">* more than one digit</span><br>
+                <span *ngIf="!isCheckedSymbolsPass">* more than one non letter symbols like !_@#$&*%</span>
+              </div>
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="password" formControlName="passwordRetype" placeholder="passwordRetype" class="form-control form-control-lg" (input)="onChangePasswordRetype()">
+              <div class="login-validate" *ngIf="isTwoPassIsEquill">
+                <span>* The bouth password string have to be equil!</span>
+              </div>
+            </fieldset>
+        
+              <!-- <button class="" type="submit" [disabled]="false" >Submit</button> -->
+              <button class="btn btn-lg btn-primary" type="submit" [disabled]="!authStatus" >Submit {{!authStatus}}</button>
+            
+        </form>
+      </div>
+      <!-- <div>
+        <h6>Form Value: {{ isValidName }}</h6>
+      </div>
+      <div>
+        <p>Form Status: {{ authGroup.status }}</p>
+      </div> -->
+      
+    </div>
+  </div>
+</div>

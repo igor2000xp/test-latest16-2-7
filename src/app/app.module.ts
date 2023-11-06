@@ -14,6 +14,8 @@ import { VehicleAutoComponent } from './UI/vehicle/main-form/vehicle-auto/vehicl
 import { VehicleScooterComponent } from './UI/vehicle/main-form/vehicle-scooter/vehicle-scooter.component';
 import { EffectsModule } from '@ngrx/effects';
 import { VehicleEffects } from './store/effects/vehicle.effects';
+import { AuthModule } from './auth/auth.module';
+import { AuthPageComponent } from './auth/pages/auth-page/auth-page.component';
 
 
 @NgModule({
@@ -26,9 +28,11 @@ import { VehicleEffects } from './store/effects/vehicle.effects';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: isDevMode() }),
+    AuthModule,
     // EffectsModule.forFeature([VehicleEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports: [ReactiveFormsModule],
 })
 export class AppModule { }
