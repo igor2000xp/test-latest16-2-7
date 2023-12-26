@@ -1,14 +1,14 @@
-const isNumeric = (input: string): boolean => {
+export const isNumeric = (input: string): boolean => {
   const regex = /^[0-9]+$/;
   return regex.test(input);
 }
 
-const isLetter = (input: string): boolean => {
+export const isLetter = (input: string): boolean => {
   const regex = /^[a-zA-Z]+$/;
   return regex.test(input);
 }
 
-const isGoodSymbol = (input: string): boolean => {
+export const isGoodSymbol = (input: string): boolean => {
   const regex = /^[a-zA-Z0-9]+$/;
   return regex.test(input);
 }
@@ -17,30 +17,31 @@ export const insertDashes = (input0: string | undefined): string => {
   if (!input0) {
     return '';
   }
-  let input = input0.toUpperCase().split('');
-
-  for (let i = 0; i < input.length; i++) {
-    input[i] = isGoodSymbol(input[i]) ? input[i] : '';
+  let input2 = input0.toUpperCase().split('');
+  let input: string[] = [''];
+  for (let i = 0; i < input2.length; i++) {
+    if (isGoodSymbol(input2[i])) input.push(input2[i]);
   }
+  input.shift();
   let result = input[0];
   let letterCount = isLetter(input[0]) ? 1 : 0;
   let toggleLetteToNumber: boolean;
   if (input.length > 1) {
     for (let i = 1; i < input.length; i++) {
       letterCount = isLetter(input[i]) ? letterCount + 1 : 0;
-      if (input[i] !== '-') {
+      if (input[i] !== '') {
         toggleLetteToNumber =
           ((((!isNumeric(input[i - 1])) && !isNumeric(input[i]))
             || (isNumeric(input[i - 1]) && isNumeric(input[i])))
-            || input[i - 1] === '-')
-
+          )
             && !(letterCount === 3)
             ? true : false;
         letterCount = !toggleLetteToNumber ? 1 : letterCount;
         result += toggleLetteToNumber ? input[i] : '-' + input[i];
-      } else {
-        result += input[i - 1] === '-' ? '' : input[i];
       }
+      // else {
+      //   result += input[i - 1] === '-' ? '' : input[i];
+      // }
     }
   }
   return result;
