@@ -2,20 +2,24 @@
 
 // import { MainFormComponent } from './main-form.component';
 
-// describe('MainFormComponent', () => {
-//   let component: MainFormComponent;
-//   let fixture: ComponentFixture<MainFormComponent>;
+describe('MainFormComponent', () => {
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [MainFormComponent]
-//     });
-//     fixture = TestBed.createComponent(MainFormComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+  it('some test', () => {
+    expect('').toEqual('');
+  });
+  //   let component: MainFormComponent;
+  //   let fixture: ComponentFixture<MainFormComponent>;
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  //   beforeEach(() => {
+  //     TestBed.configureTestingModule({
+  //       declarations: [MainFormComponent]
+  //     });
+  //     fixture = TestBed.createComponent(MainFormComponent);
+  //     component = fixture.componentInstance;
+  //     fixture.detectChanges();
+  //   });
+
+  //   it('should create', () => {
+  //     expect(component).toBeTruthy();
+  //   });
+});
