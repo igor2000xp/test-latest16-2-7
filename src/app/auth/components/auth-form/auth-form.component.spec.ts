@@ -1,27 +1,29 @@
-// // import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-// // import { AuthFormComponent } from './auth-form.component';
+import { AuthFormComponent } from './auth-form.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('AuthFormComponent', () => {
-  it('some test', () => {
-    expect('').toEqual('');
-  })
-  // //   let component: AuthFormComponent;
-  // //   let fixture: ComponentFixture<AuthFormComponent>;
+  // it('some test', () => {
+  //   expect('').toEqual('');
+  // })
+  let component: AuthFormComponent;
+  let fixture: ComponentFixture<AuthFormComponent>;
 
-  // //   beforeEach(() => {
-  // //     TestBed.configureTestingModule({
-  // //       declarations: [AuthFormComponent]
-  // //     });
-  // //     fixture = TestBed.createComponent(AuthFormComponent);
-  // //     component = fixture.componentInstance;
-  // //     fixture.detectChanges();
-  // //   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [AuthFormComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+    });
+    fixture = TestBed.createComponent(AuthFormComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-  // //   it('should create', () => {
-  // //     expect(component).toBeTruthy();
-  // //   });
-  // // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+  // });
 
   // import { FormBuilder } from '@angular/forms';
   // import { AuthFormComponent } from './auth-form.component';
