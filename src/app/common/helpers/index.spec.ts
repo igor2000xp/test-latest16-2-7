@@ -1,9 +1,6 @@
 import { insertDashes, isGoodSymbol, isLetter, isNumeric } from './index';
 
 describe('helpers tests', () => {
-  // it('some test', () => {
-  //   expect(1).toEqual(1);
-  // });
 
   it('returnn true if isNumeric conscists number, test validator', () => {
     expect(isNumeric('123')).toEqual(true);
@@ -34,7 +31,7 @@ describe('helpers tests', () => {
   it('return "AB-CD-12" insertDashes("ab-c-d-12")', () => {
     expect(insertDashes('ab-c-d-12')).toEqual('AB-CD-12');
   });
-  it('', () => {
+  it('return "AB-CD-12" insertDashes("12abcd") when string start a number symbol', () => {
     expect(insertDashes('12abcd')).toEqual('12-AB-CD');
   });
 });
